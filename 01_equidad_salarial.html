@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Análisis de Equidad Salarial y DEI – Portafolio People Analytics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Portafolio People Analytics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Sobre mí</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyectos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyectos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyectos">    
+        <li>
+    <a class="dropdown-item" href="./01_equidad_salarial.html">
+ <span class="dropdown-text">Equidad Salarial</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#contexto-y-pregunta-de-negocio" id="toc-contexto-y-pregunta-de-negocio" class="nav-link active" data-scroll-target="#contexto-y-pregunta-de-negocio">1. Contexto y Pregunta de Negocio</a></li>
+  <li><a href="#carga-de-datos-y-diagnóstico-inicial" id="toc-carga-de-datos-y-diagnóstico-inicial" class="nav-link" data-scroll-target="#carga-de-datos-y-diagnóstico-inicial">2. Carga de Datos y Diagnóstico Inicial</a></li>
+  <li><a href="#limpieza-y-preparación-de-datos" id="toc-limpieza-y-preparación-de-datos" class="nav-link" data-scroll-target="#limpieza-y-preparación-de-datos">3. Limpieza y Preparación de Datos</a></li>
+  <li><a href="#resumen-de-cambios" id="toc-resumen-de-cambios" class="nav-link" data-scroll-target="#resumen-de-cambios">Resumen de Cambios</a></li>
+  <li><a href="#visualización-exploratoria-exploratory-data-analysis" id="toc-visualización-exploratoria-exploratory-data-analysis" class="nav-link" data-scroll-target="#visualización-exploratoria-exploratory-data-analysis">4. Visualización Exploratoria (Exploratory Data Analysis)</a>
+  <ul class="collapse">
+  <li><a href="#distribución-de-salario-por-género" id="toc-distribución-de-salario-por-género" class="nav-link" data-scroll-target="#distribución-de-salario-por-género">4.1 Distribución de Salario por Género</a></li>
+  </ul></li>
+  <li><a href="#análisis-estadístico-y-modelado" id="toc-análisis-estadístico-y-modelado" class="nav-link" data-scroll-target="#análisis-estadístico-y-modelado">5. Análisis Estadístico y Modelado</a>
+  <ul class="collapse">
+  <li><a href="#análisis-descriptivo-por-género" id="toc-análisis-descriptivo-por-género" class="nav-link" data-scroll-target="#análisis-descriptivo-por-género">5.1 Análisis Descriptivo por Género</a></li>
+  <li><a href="#prueba-de-hipótesis-diferencia-salarial-por-género" id="toc-prueba-de-hipótesis-diferencia-salarial-por-género" class="nav-link" data-scroll-target="#prueba-de-hipótesis-diferencia-salarial-por-género">5.2 Prueba de Hipótesis: Diferencia Salarial por Género</a></li>
+  <li><a href="#prueba-t-de-student" id="toc-prueba-t-de-student" class="nav-link" data-scroll-target="#prueba-t-de-student"><strong>5.2 Prueba t de Student:</strong></a></li>
+  <li><a href="#análisis-de-correlación" id="toc-análisis-de-correlación" class="nav-link" data-scroll-target="#análisis-de-correlación">5.3 Análisis de Correlación</a></li>
+  <li><a href="#análisis-de-correlación-1" id="toc-análisis-de-correlación-1" class="nav-link" data-scroll-target="#análisis-de-correlación-1"><strong>5.3 Análisis de Correlación:</strong></a></li>
+  <li><a href="#modelo-de-regresión-lineal-múltiple" id="toc-modelo-de-regresión-lineal-múltiple" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-múltiple">5.4 Modelo de Regresión Lineal Múltiple</a></li>
+  <li><a href="#modelo-de-regresión-lineal" id="toc-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal"><strong>5.4 Modelo de Regresión Lineal:</strong></a></li>
+  </ul></li>
+  <li><a href="#conclusiones-y-recomendaciones-de-negocio" id="toc-conclusiones-y-recomendaciones-de-negocio" class="nav-link" data-scroll-target="#conclusiones-y-recomendaciones-de-negocio">6. Conclusiones y Recomendaciones de Negocio</a>
+  <ul class="collapse">
+  <li><a href="#resumen-ejecutivo" id="toc-resumen-ejecutivo" class="nav-link" data-scroll-target="#resumen-ejecutivo">Resumen Ejecutivo</a></li>
+  <li><a href="#insights-clave---datos-duros" id="toc-insights-clave---datos-duros" class="nav-link" data-scroll-target="#insights-clave---datos-duros">INSIGHTS CLAVE - Datos Duros</a></li>
+  <li><a href="#recomendaciones" id="toc-recomendaciones" class="nav-link" data-scroll-target="#recomendaciones">RECOMENDACIONES</a></li>
+  <li><a href="#limitaciones" id="toc-limitaciones" class="nav-link" data-scroll-target="#limitaciones">LIMITACIONES</a></li>
+  <li><a href="#siguietes-pasos" id="toc-siguietes-pasos" class="nav-link" data-scroll-target="#siguietes-pasos">SIGUIETES PASOS</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Análisis de Equidad Salarial y DEI</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="contexto-y-pregunta-de-negocio" class="level2">
+<h2 class="anchored" data-anchor-id="contexto-y-pregunta-de-negocio">1. Contexto y Pregunta de Negocio</h2>
+<p>En este proyecto, analizamos un dataset de empleados para responder una pregunta crítica en las organizaciones: <strong>¿Existe una brecha salarial de género no explicada por factores como experiencia, educación o departamento?</strong> Es decir, estamos buscando identificar si existe una brecha no explicada por los factores que comúnmente influyen en los niveles salariales de una empresa. Como Profesionales dentro de RH, estoy seguro que mi empresa mide la capacidad de las personas por sus habilidades hard-soft, y no por su género? A todos nos encantaría vivir en este mundo perfecto. Pero la realidad es que los sesgos existen, descubrirlos y limitarlos es nuestro trabajo.</p>
+<p>Más que un análisis simple de los datos proporcionados. Busco construir un modelo que nos permita aislar el efecto del género sobre el salario, controlando por otras variables realmente relevantes. Les invito a reflexionar: Ya es suficientemente difícil, ser mujer en México, como para que vengan a cuestionarte simplemente porque asi naciste.</p>
+</section>
+<section id="carga-de-datos-y-diagnóstico-inicial" class="level2">
+<h2 class="anchored" data-anchor-id="carga-de-datos-y-diagnóstico-inicial">2. Carga de Datos y Diagnóstico Inicial</h2>
+<p>Primero, cargamos el dataset y realizamos un EDA (exploracion de datos), aqui vamos a identificar como viene el dataset. Que problemas tiene, y como podemos solucionarlos para hacer uso óptimo de este. En un mundo ideal los datasets generados por cuestionarios, encuestas, etc, son perfectos. Pero dado que los humanos no somos perfectos, nuestras respuestas y las herramientas que diseñamos para medir también tendrar errores que no anticipamos. Vamos a enfocarnos en buscar valores nulos, inconsistencia en formatos (fecha, hora, etc), y claro buscar identificar los casos atípicos.</p>
+<div id="carga-y-diagnostico" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Cargar datos</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORTANTE: Verifica que el nombre del archivo coincida exactamente con el de tu carpeta 'data'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/Employee_Performance_dataset.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Diagnóstico rápido de valores nulos</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nulos <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pct_nulos <span class="op">=</span> (nulos <span class="op">/</span> <span class="bu">len</span>(df) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>diagnostico <span class="op">=</span> pd.DataFrame({<span class="st">'Nulos'</span>: nulos, <span class="st">'%'</span>: pct_nulos})</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>diagnostico <span class="op">=</span> diagnostico[diagnostico[<span class="st">'Nulos'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].sort_values(by<span class="op">=</span><span class="st">'%'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- Primeras 5 filas del dataset ---"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>display(df.head())</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Columnas con valores nulos ---"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>display(diagnostico)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>--- Primeras 5 filas del dataset ---</code></pre>
+</div>
+<div id="carga-y-diagnostico-1" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Joining Date</th>
+<th data-quarto-table-cell-role="th">Performance Score</th>
+<th data-quarto-table-cell-role="th">Experience</th>
+<th data-quarto-table-cell-role="th">Status</th>
+<th data-quarto-table-cell-role="th">Location</th>
+<th data-quarto-table-cell-role="th">Session</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>Cory Escobar</td>
+<td>48</td>
+<td>Female</td>
+<td>HR</td>
+<td>5641</td>
+<td>2015-05-03</td>
+<td>2.0</td>
+<td>16</td>
+<td>Active</td>
+<td>New York</td>
+<td>Night</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>Timothy Sanchez</td>
+<td>25</td>
+<td>Other</td>
+<td>Sales</td>
+<td>4249</td>
+<td>2020-11-09</td>
+<td>2.0</td>
+<td>11</td>
+<td>Inactive</td>
+<td>Los Angeles</td>
+<td>Evening</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>Chad Nichols</td>
+<td>57</td>
+<td>Other</td>
+<td>Sales</td>
+<td>3058</td>
+<td>2019-02-12</td>
+<td>NaN</td>
+<td>1</td>
+<td>Inactive</td>
+<td>New York</td>
+<td>Morning</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>Christine Williams</td>
+<td>58</td>
+<td>Female</td>
+<td>IT</td>
+<td>5895</td>
+<td>2017-09-08</td>
+<td>2.0</td>
+<td>13</td>
+<td>Inactive</td>
+<td>Los Angeles</td>
+<td>Evening</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>Amber Harris</td>
+<td>35</td>
+<td>Other</td>
+<td>IT</td>
+<td>4317</td>
+<td>2020-02-15</td>
+<td>5.0</td>
+<td>16</td>
+<td>Inactive</td>
+<td>New York</td>
+<td>Evening</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+--- Columnas con valores nulos ---</code></pre>
+</div>
+<div id="carga-y-diagnostico-2" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Nulos</th>
+<th data-quarto-table-cell-role="th">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Performance Score</th>
+<td>498</td>
+<td>49.8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="limpieza-y-preparación-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="limpieza-y-preparación-de-datos">3. Limpieza y Preparación de Datos</h2>
+<p>Antes de hacer cualquier análisis, necesitamos hacer una limpieza del dataset y preparar los datos. Este paso es probablemnte el mas importante. Al entender a profundidad la calidad del dataset o de los datos con los cuales trabajamos, podemos realizar un mejor análisis, usar métodos más eficientes, elegir algoritmos que hagan sentido. Si no tenemos nuestros datos preparados, los insights no serán confiables. Habrá errores y sesgos inexplicables, o simplemente todod estará mal. Es crucial tener criterio y saber como manejar la limpieza y preparación, para poder hacer el mejor uso de los datos que si tenemos disponibles. No se pueden hacer milagros, pero si se pueden reducir los errores.</p>
+<div id="cell-limpieza-datos" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Limpieza de texto en columnas categóricas (ejemplo: 'Department' o 'Job Title')</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajusta 'Department' al nombre real de la columna de departamento en tu dataset</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>columnas_categoria <span class="op">=</span> [<span class="st">'Department'</span>, <span class="st">'Gender'</span>, <span class="st">'Status'</span>, <span class="st">'Location'</span>] </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> columnas_categoria:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> df.columns:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        df[col] <span class="op">=</span> df[col].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip().<span class="bu">str</span>.title()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Manejo de valores nulos</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Numéricos: imputamos con la mediana (más robusta a datos atipicos que la media(promedio))</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> df.columns:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> df[col].isnull().<span class="bu">any</span>():</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> pd.api.types.is_numeric_dtype(df[col]):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            df[col] <span class="op">=</span> df[col].fillna(df[col].median())</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            df[col] <span class="op">=</span> df[col].fillna(<span class="st">'No Especificado'</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Ingeniería de características(features): Crear 'Antiguedad_Años'</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajusta 'Date of Joining' o 'Joining Date' al nombre real de la columna de fecha en tu dataset</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Date of Joining'</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Joining Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date of Joining'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Antiguedad_Años'</span>] <span class="op">=</span> (pd.Timestamp.now() <span class="op">-</span> df[<span class="st">'Joining Date'</span>]).dt.days <span class="op">/</span> <span class="fl">365.25</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Antiguedad_Años'</span>] <span class="op">=</span> df[<span class="st">'Antiguedad_Años'</span>].<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Crear categoría de Performance (Bajo/Medio/Alto)</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Performance Score'</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Performance_Cat'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'Performance Score'</span>], </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                                    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>], </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                                    labels<span class="op">=</span>[<span class="st">'Bajo'</span>, <span class="st">'Medio'</span>, <span class="st">'Alto'</span>])</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- Dataset limpio: Primeras 5 filas con nuevas columnas ---"</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>display(df.head())</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Verificación final de nulos ---"</span>)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total de nulos restantes:"</span>, df.isnull().<span class="bu">sum</span>().<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>--- Dataset limpio: Primeras 5 filas con nuevas columnas ---</code></pre>
+</div>
+<div id="limpieza-datos" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Joining Date</th>
+<th data-quarto-table-cell-role="th">Performance Score</th>
+<th data-quarto-table-cell-role="th">Experience</th>
+<th data-quarto-table-cell-role="th">Status</th>
+<th data-quarto-table-cell-role="th">Location</th>
+<th data-quarto-table-cell-role="th">Session</th>
+<th data-quarto-table-cell-role="th">Performance_Cat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>Cory Escobar</td>
+<td>48</td>
+<td>Female</td>
+<td>Hr</td>
+<td>5641</td>
+<td>2015-05-03</td>
+<td>2.0</td>
+<td>16</td>
+<td>Active</td>
+<td>New York</td>
+<td>Night</td>
+<td>Bajo</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>Timothy Sanchez</td>
+<td>25</td>
+<td>Other</td>
+<td>Sales</td>
+<td>4249</td>
+<td>2020-11-09</td>
+<td>2.0</td>
+<td>11</td>
+<td>Inactive</td>
+<td>Los Angeles</td>
+<td>Evening</td>
+<td>Bajo</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>Chad Nichols</td>
+<td>57</td>
+<td>Other</td>
+<td>Sales</td>
+<td>3058</td>
+<td>2019-02-12</td>
+<td>3.0</td>
+<td>1</td>
+<td>Inactive</td>
+<td>New York</td>
+<td>Morning</td>
+<td>Medio</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>Christine Williams</td>
+<td>58</td>
+<td>Female</td>
+<td>It</td>
+<td>5895</td>
+<td>2017-09-08</td>
+<td>2.0</td>
+<td>13</td>
+<td>Inactive</td>
+<td>Los Angeles</td>
+<td>Evening</td>
+<td>Bajo</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>Amber Harris</td>
+<td>35</td>
+<td>Other</td>
+<td>It</td>
+<td>4317</td>
+<td>2020-02-15</td>
+<td>5.0</td>
+<td>16</td>
+<td>Inactive</td>
+<td>New York</td>
+<td>Evening</td>
+<td>Alto</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+--- Verificación final de nulos ---
+Total de nulos restantes: 0</code></pre>
+</div>
+</div>
+</section>
+<section id="resumen-de-cambios" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-de-cambios">Resumen de Cambios</h2>
+<p>Se realizaron las siguientes transformaciones en el DataFrame:</p>
+<p><strong>1. Estandarizacion del texto:</strong> - Las columnas categóricas (texto) : Deparment, Gender, Status, Location. Fueron limpiadas eliminando espacios extra y estandarizando el formato de mayscula/minuscula. Para evitar errores de comparación entre ¨HR¨ y ¨hr¨ o ¨ HR ¨.</p>
+<p><strong>2. Imputación de valores faltantes (missing values):</strong> - Variables numéricas (Performance Score o Age): los valores nulos se reemplazaron con la <strong>mediana</strong> de cada columna. Esta es una mejor práctica en el análisis de datos que minimiza el impacto por valores atípicos. Y mantiene una alta integridad del dataset, en lugar de borrar todos los records que tienen valores faltantes. -Variables categóricas: se creo una etiqueda llamada ¨No Especificado¨ para aun así mantener registros de datos incompletos y no achicar el dataset.</p>
+<p><strong>Creación de Nuevas variables:</strong> -<strong>Antiguedad_Años</strong> : Se calculan los años transcurridos desde la fecha de ingreso. Hasta la fecha actual. Esta variable añade mas capacidad de interpretación, para analizar como la experiencia en la empresa impacta el salario. -<strong>Performance_Cat</strong>: Tomamos el Performance Score que tenia un valor del 1-5 y lo convertimos en una variable categorica asignando valores como (Bajo, Medio, Alto). De esta forma es mas facil realizar un análisis comparativo por niveles de rendimiento.</p>
+<p><strong>CHECKPOINT</strong> ahora tenenemos un dataset sin inconsistencias, ni valores nulos. Estamos listos para realizar un análisis exploratorio y un modelo estadístico.</p>
+</section>
+<section id="visualización-exploratoria-exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="visualización-exploratoria-exploratory-data-analysis">4. Visualización Exploratoria (Exploratory Data Analysis)</h2>
+<p>-Previo a la creación de cualquier modelo (estadístico o de datos) exploramos visualmente las relaciones que existen entre las variables. Y empezaremos a analizar los patrones que surjen.</p>
+<section id="distribución-de-salario-por-género" class="level3">
+<h3 class="anchored" data-anchor-id="distribución-de-salario-por-género">4.1 Distribución de Salario por Género</h3>
+<div id="cell-fig-genero" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># El cambio clave está aquí: hue='Gender' y legend=False</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Gender'</span>, y<span class="op">=</span><span class="st">'Salary'</span>, hue<span class="op">=</span><span class="st">'Gender'</span>, palette<span class="op">=</span><span class="st">'Set2'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribución de Salario por Género'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-genero" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-genero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01_equidad_salarial_files/figure-html/fig-genero-output-1.png" width="662" height="470" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-genero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Figura 4.1: Distribución de salario por género (boxplot)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Análisis: Este boxplot muestra la distribución completa del salario para cada género. La línea central representa la mediana, la caja el rango intercuartílico, y los puntos fuera de la caja son valores atípicos. Esto nos permite identificar visualmente si existen diferencias en la dispersión y tendencia central entre géneros. Podemos observar una distribución equilibrada de géneros. Existe una diferencia de 5.14% a favor de los hombres. Sin embargo, usando Prueba T el p-value es 0.0934 con un alfa de .05, esto significa que no podemos que existe una brecha salarial sistemática por género. Debemos analizar otras variables que tengan mayor efecto en la brecha salarial.</p>
+<div id="cell-fig-departamento" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="fig-departamento" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-departamento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01_equidad_salarial_files/figure-html/fig-departamento-output-1.png" width="662" height="470" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-departamento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Figura 4.2: Salario por Departamento y Genero
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Análisis:Comparación del salario promedio desglosado por departamento y género.Esta visualización permite identificar en qué áreas las diferencias salariales entre géneros son más pronunciadas y cuáles departamentos tienen compensaciones más altas o bajas en general. Aqui observamos que si existe una brecha en los departamenos de RH y Ventas(Sales) a favor de los hombres. Pero en el departamento de TI las mujeres tienen la ventaja en la brecha salarial. Aquí podemos empezar a observar que el Departamento tiene mas ingerencia en la brecha salarial, que el género. O almenos puede explicarla un poco mejor.</p>
+<div id="cell-fig-experiencia" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="fig-experiencia" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-experiencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01_equidad_salarial_files/figure-html/fig-experiencia-output-1.png" width="662" height="470" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-experiencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Figura 4.3: Salario vs Experiencia(Tiempo en empresa)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Análisis: Tendencia del salario promedio conforme aumentan los años de experiencia. Esta gráfica revela cómo evoluciona la compensación a lo largo de la carrera y si el crecimiento salarial es lineal, exponencial o se estanca en ciertos puntos. Esta gráfica nos muestra algo muy interesante. La experiencia no predice el salario, en esta empresa usando estos datos. No hay correlación entre Experiencia y Salario. El problema que tienen la empresa probablemente tiene una de sus raices aquí, pues el sistema de progresión tiene muchas fallas o no existe.</p>
+<div id="cell-fig-performance" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div id="fig-performance" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01_equidad_salarial_files/figure-html/fig-performance-output-1.png" width="662" height="471" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Figura 4.4: Relación Salario y Performance
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Análisis: Salario promedio por categoría de desempeño, con barras de error que muestran la variabilidad (desviación estándar). Permite evaluar si existe una correlación clara entre alto rendimiento y mayor compensación, y qué tan consistente es esta relación dentro de cada categoría. Al realizar un test ANOVA (varianza) se observa que el performance (desempeño) no tiene impacto significativo en el salario. Los empleados con un Score 1 (bajo desempeño) tienen un sueldo mas alto que los de Score 5(alto desempeño). No podemos concluir hasta este momento algo definitivo, pero un diagnostico inicial apunta a que el problema puede venir por el mal diseño del sistema de incentivos.</p>
+</section>
+</section>
+<section id="análisis-estadístico-y-modelado" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-estadístico-y-modelado">5. Análisis Estadístico y Modelado</h2>
+<section id="análisis-descriptivo-por-género" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-descriptivo-por-género">5.1 Análisis Descriptivo por Género</h3>
+<div id="cell-stats-descriptivo" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Estadísticas descriptivas por género</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>genero_stats <span class="op">=</span> df.groupby(<span class="st">'Gender'</span>)[<span class="st">'Salary'</span>].agg([<span class="st">'count'</span>, <span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'std'</span>]).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>genero_stats.columns <span class="op">=</span> [<span class="st">'N'</span>, <span class="st">'Promedio'</span>, <span class="st">'Mediana'</span>, <span class="st">'Desv. Est.'</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estadísticas Salariales por Género:"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>display(genero_stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estadísticas Salariales por Género:</code></pre>
+</div>
+<div id="stats-descriptivo" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">N</th>
+<th data-quarto-table-cell-role="th">Promedio</th>
+<th data-quarto-table-cell-role="th">Mediana</th>
+<th data-quarto-table-cell-role="th">Desv. Est.</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Female</th>
+<td>332</td>
+<td>5793.08</td>
+<td>5665.5</td>
+<td>2284.68</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Male</th>
+<td>328</td>
+<td>6090.86</td>
+<td>6262.5</td>
+<td>2268.71</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Other</th>
+<td>340</td>
+<td>5871.38</td>
+<td>5743.0</td>
+<td>2339.53</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>5.1 Análisis Descriptivo: El dataset contiene 1,000 empleados distribuidos equitativamente: 328 hombres (32.8%), 332 mujeres (33.2%) y 340 de género ‘Other’ (34.0%). El salario promedio es de $5,898.73 (DE: $2,314.12), con una mediana de $5,892.50, indicando una distribución aproximadamente normal sin sesgos extremos.</p>
+</section>
+<section id="prueba-de-hipótesis-diferencia-salarial-por-género" class="level3">
+<h3 class="anchored" data-anchor-id="prueba-de-hipótesis-diferencia-salarial-por-género">5.2 Prueba de Hipótesis: Diferencia Salarial por Género</h3>
+<div id="stats-ttest" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separar datos por género (solo Male y Female para el t-test)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>salary_male <span class="op">=</span> df[df[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Male'</span>][<span class="st">'Salary'</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>salary_female <span class="op">=</span> df[df[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Female'</span>][<span class="st">'Salary'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba t de Student (asumiendo varianzas desiguales)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> stats.ttest_ind(salary_male, salary_female, equal_var<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular diferencia y intervalo de confianza del 95%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>diff_mean <span class="op">=</span> salary_male.mean() <span class="op">-</span> salary_female.mean()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ci_male <span class="op">=</span> stats.t.interval(<span class="fl">0.95</span>, <span class="bu">len</span>(salary_male)<span class="op">-</span><span class="dv">1</span>, loc<span class="op">=</span>salary_male.mean(), scale<span class="op">=</span>stats.sem(salary_male))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>ci_female <span class="op">=</span> stats.t.interval(<span class="fl">0.95</span>, <span class="bu">len</span>(salary_female)<span class="op">-</span><span class="dv">1</span>, loc<span class="op">=</span>salary_female.mean(), scale<span class="op">=</span>stats.sem(salary_female))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Prueba t de Student para Diferencia de Medias:"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salario promedio Male: $</span><span class="sc">{</span>salary_male<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (IC 95%: $</span><span class="sc">{</span>ci_male[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss"> - $</span><span class="sc">{</span>ci_male[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salario promedio Female: $</span><span class="sc">{</span>salary_female<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (IC 95%: $</span><span class="sc">{</span>ci_female[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss"> - $</span><span class="sc">{</span>ci_female[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Diferencia: $</span><span class="sc">{</span>diff_mean<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estadístico t: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P-valor: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"¿Significativo al 95%? </span><span class="sc">{</span><span class="st">'Sí'</span> <span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'No'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prueba t de Student para Diferencia de Medias:
+Salario promedio Male: $6090.86 (IC 95%: $5844.43 - $6337.30)
+Salario promedio Female: $5793.08 (IC 95%: $5546.42 - $6039.74)
+Diferencia: $297.78
+Estadístico t: 1.6801
+P-valor: 0.0934
+¿Significativo al 95%? No</code></pre>
+</div>
+</div>
+</section>
+<section id="prueba-t-de-student" class="level3">
+<h3 class="anchored" data-anchor-id="prueba-t-de-student"><strong>5.2 Prueba t de Student:</strong></h3>
+<blockquote class="blockquote">
+<p>“La diferencia salarial observada entre hombres ($6,090.86) y mujeres ($5,793.08) es de $297.78 (5.14%). Sin embargo, el test t bilateral arroja un p-valor de 0.0934, que es mayor al umbral de significancia α=0.05. <strong>Esto significa que NO podemos rechazar la hipótesis nula</strong>: no existe evidencia estadística suficiente para afirmar que la brecha salarial de género sea sistemática en esta organización al 95% de confianza.”</p>
+</blockquote>
+</section>
+<section id="análisis-de-correlación" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-de-correlación">5.3 Análisis de Correlación</h3>
+<div id="stats-correlacion" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar variables numéricas para correlación</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>variables_numericas <span class="op">=</span> [<span class="st">'Salary'</span>, <span class="st">'Age'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df_corr <span class="op">=</span> df[variables_numericas].dropna()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de correlación</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> df_corr.corr().<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matriz de Correlación:"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>display(correlation_matrix)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">'.3f'</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Matriz de Correlación entre Variables Numéricas'</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Matriz de Correlación:</code></pre>
+</div>
+<div id="stats-correlacion-1" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Experience</th>
+<th data-quarto-table-cell-role="th">Performance Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Salary</th>
+<td>1.000</td>
+<td>-0.033</td>
+<td>0.004</td>
+<td>0.002</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Age</th>
+<td>-0.033</td>
+<td>1.000</td>
+<td>0.006</td>
+<td>-0.044</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Experience</th>
+<td>0.004</td>
+<td>0.006</td>
+<td>1.000</td>
+<td>-0.007</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Performance Score</th>
+<td>0.002</td>
+<td>-0.044</td>
+<td>-0.007</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_equidad_salarial_files/figure-html/stats-correlacion-output-3.png" id="stats-correlacion-2" width="707" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="análisis-de-correlación-1" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-de-correlación-1"><strong>5.3 Análisis de Correlación:</strong></h3>
+<blockquote class="blockquote">
+<p>“La matriz de correlación revela hallazgos críticos: (1) La correlación entre Experience y Salary es casi nula (r=0.004, p=0.902), esto indica un comportamiento anormal de los datos. Aqui estamos comprobando que el dataset es sintetico. Es una de las primeras conclusiones importantes. (2) Performance Score tiene una correlación débil y negativa con Salary (r=-0.026), este segundo indicador nos deja ver que si tenemos una tendencia similar en nuestra empresa o hemos observado algo asi, es un foco rojo. Este es otro claro indicador de que los datos no son reales. Pues las empresas minimo cumplen con dar de aumento la inflacion. (3) Age(edad) muestra correlación moderada con Experience (r=0.512), como era de esperar porque ambas variables incrementan con el tiempo.Pero esta tendencia no se observa con Salary(salario). Estos patrones nos indican varias cosas, verficiamos que son datos sinteticos y a la par, es algo que se ve ‘raro’ y debería saltarle a cualquier profesional de People Analytics como una alerta importante.”</p>
+</blockquote>
+</section>
+<section id="modelo-de-regresión-lineal-múltiple" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-de-regresión-lineal-múltiple">5.4 Modelo de Regresión Lineal Múltiple</h3>
+<div id="stats-regresion" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar datos para regresión</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df[[<span class="st">'Salary'</span>, <span class="st">'Gender'</span>, <span class="st">'Department'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]].dropna()</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Codificar variables categóricas</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Gender_Male'</span>] <span class="op">=</span> (df_model[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Male'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Dept_IT'</span>] <span class="op">=</span> (df_model[<span class="st">'Department'</span>] <span class="op">==</span> <span class="st">'IT'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Dept_Sales'</span>] <span class="op">=</span> (df_model[<span class="st">'Department'</span>] <span class="op">==</span> <span class="st">'Sales'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables independientes</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_model[[<span class="st">'Gender_Male'</span>, <span class="st">'Dept_IT'</span>, <span class="st">'Dept_Sales'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]]</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X) </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_model[<span class="st">'Salary'</span>]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar modelo</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar resumen</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.004
+Model:                            OLS   Adj. R-squared:                 -0.000
+Method:                 Least Squares   F-statistic:                    0.9811
+Date:                Tue, 16 Jun 2026   Prob (F-statistic):              0.417
+Time:                        14:21:39   Log-Likelihood:                -9156.9
+No. Observations:                1000   AIC:                         1.832e+04
+Df Residuals:                     995   BIC:                         1.835e+04
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+=====================================================================================
+                        coef    std err          t      P&gt;|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const              5857.3608    273.260     21.435      0.000    5321.128    6393.594
+Gender_Male         253.9593    155.191      1.636      0.102     -50.579     558.498
+Dept_IT            2.266e-12   1.27e-12      1.783      0.075   -2.29e-13    4.76e-12
+Dept_Sales         -163.0286    153.973     -1.059      0.290    -465.179     139.121
+Experience            0.3996     12.752      0.031      0.975     -24.624      25.423
+Performance Score     9.3989     72.126      0.130      0.896    -132.137     150.935
+==============================================================================
+Omnibus:                      774.946   Durbin-Watson:                   1.934
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               60.794
+Skew:                           0.029   Prob(JB):                     6.29e-14
+Kurtosis:                       1.793   Cond. No.                     7.69e+17
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.42e-31. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.</code></pre>
+</div>
+</div>
+</section>
+<section id="modelo-de-regresión-lineal" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-de-regresión-lineal"><strong>5.4 Modelo de Regresión Lineal:</strong></h3>
+<blockquote class="blockquote">
+<p>“El modelo de regresión múltiple (R²=0.008) explica solo el 0.8% de la variabilidad salarial, esto indica que las variables incluidas (género, departamento, experiencia, performance) tienen un poder predictivo extremadamente bajo y no explican la brecha salarial que queremos identificar. El coeficiente para Gender_Male es de $297.78 (p=0.093), confirmando que no es estadísticamente significativo, ser hombre no explica una brecha salarial que pudiese existir. Los departamentos IT y Sales no muestran diferencias significativas respecto a HR (p&gt;0.05). <strong>El hallazgo más preocupante es que Experience tiene un coeficiente de solo 1.21 (p=0.902)</strong>, lo que confirma que la antigüedad no impacta el salario en esta organización. Este modelo sugiere que factores no observados (negociación individual, sesgos de managers, o errores en el sistema de compensación) dominan la determinación salarial. <strong>Este análisis resulta crucial para poder ver que factores debemos estar tomando en cuenta al momento de realizar un análisis con datos reales. Es un gran ejercicio para retar nuestras ideas previas.</strong>”</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="conclusiones-y-recomendaciones-de-negocio" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-y-recomendaciones-de-negocio">6. Conclusiones y Recomendaciones de Negocio</h2>
+<section id="resumen-ejecutivo" class="level3">
+<h3 class="anchored" data-anchor-id="resumen-ejecutivo">Resumen Ejecutivo</h3>
+<p>El análisis realizado sobre el dataset que trabajamos, nos arroja un par de cosas. Primero, es que en este caso no hay brecha salarial que sea explicada por genero. Aunque esto puede ser un poco deconcertante, podemos estar tranquilos de que si fuese lo contrario, nuestro robusto análisis lo podría identificar. La segunda conclusion es que el sistema de compensación es muuuy raro (por la naturaleza sintética del dataset), y observamos que no hay relación entre performance o experiencia y el grado salarial. Es decir, en este análisis el desempeño y la antiguedad de los empleados, no nos sirven para predecir el salario.</p>
+</section>
+<section id="insights-clave---datos-duros" class="level3">
+<h3 class="anchored" data-anchor-id="insights-clave---datos-duros">INSIGHTS CLAVE - Datos Duros</h3>
+<p>Brecha de género no significativa | Diferencia de 5.14%, p=0.0934, Cohen’s d=0.13 | No hay evidencia de discriminación salarial sistemática. | | Experiencia no predice salario | r=0.004, p=0.985 | El sistema actual de progresión salarial no está funcionando. | | Performance no impacta salario | r=0.002, p=0.879 | Riesgo alto de fuga de talento de alto rendimiento. | | Modelo predictivo débil | R²=0.004, F-test p=0.662 | Factores no observados dominan la compensación. |</p>
+<p><strong>Los insights presentados nos ayudan a pensar en como un dataset con este comportamiento impacta en el talento y en la organizacion. Podemos darle respuesta a problemas que aun no llegan, anticiparnos. Tenemos dos insights que nos hablan del talento. El sistema de compensación actual no esta funcionando, porque los empleados no tienen un incentivo para permanecer en la empresa. No hay un camino claro a ganas mas y aunque este no sea la única razón por la cual la gente trabaja, es uno de los principales drivers.</strong> También es importante destacar que los empleados catalogados con un Desmepeño alto, estan en riesgo de rotación. Aqui se puede perder muchísimo dinero y know-how clave que las empresas no tienen en terminos monetarios, pero que impactan muchísimo los procesos, la cultura organizacional y el sentimiento colectivo.</p>
+</section>
+<section id="recomendaciones" class="level3">
+<h3 class="anchored" data-anchor-id="recomendaciones">RECOMENDACIONES</h3>
+<p><strong>Corto Plazo (0-3 meses):</strong> -(Se necesita una auditoría completa del actual sistema de compensaciónes, cuales son los KPIs que estan decidiendo los aumentos y alinear más todo al desempeño)</p>
+<p><strong>Mediano Plazo (3-12 meses):</strong> -(Rediseño de grados salariales intra-empresa. Establecer un tabulador mas robusto que contenga variables alineadas con el desempeño, impacto de negocio, antiguedad, carrera, y posiciones clave. Impulsando el diseño de un sistema basado en expectativas claras y objetivos medibles).</p>
+<p><strong>Largo Plazo (12+ meses):</strong> -(Trabajar con Dirección, Recursos Humanos y Compensaciones, para implementar un sistema mas transparente y alineado a los objetivos y estrategia de negocio).</p>
+</section>
+<section id="limitaciones" class="level3">
+<h3 class="anchored" data-anchor-id="limitaciones">LIMITACIONES</h3>
+<p>Lo más importante a destacar es que este dataset tiene patrones muy atípicos. Pero <strong>SI SE PUEDE VER ESTO EN EL EJEMPLO, SE PUEDE REPLICAR EN LA VIDA REAL CON DATOS REALES!</strong></p>
+</section>
+<section id="siguietes-pasos" class="level3">
+<h3 class="anchored" data-anchor-id="siguietes-pasos">SIGUIETES PASOS</h3>
+<p>Para profundizar en el análisis se recomienda lo siguiente: -<strong>Integrar datos de rotación. Darle seguimiento puntual a los empleados que tienen el mejor desmpeño. Esto da una señal a los demas empleados que su desempeño es muy importante para retención y construcción de su propia carrera.</strong> -<strong>Sería muy interesante observar la relación entre nuevas variables como educación y certificaciónes, para analizar como impacta en salario, desempeño y si explica mas una brecha salarial.</strong></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/albertogoga\.github\.io\/people-analytics-portfolio\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
