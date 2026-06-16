@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Análisis de Equidad Salarial y DEI – Portafolio People Analytics</title>
+<title>Salary Equity and DEI Analysis – Portafolio People Analytics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -173,31 +173,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contexto-y-pregunta-de-negocio" id="toc-contexto-y-pregunta-de-negocio" class="nav-link active" data-scroll-target="#contexto-y-pregunta-de-negocio">1. Contexto y Pregunta de Negocio</a></li>
-  <li><a href="#carga-de-datos-y-diagnóstico-inicial" id="toc-carga-de-datos-y-diagnóstico-inicial" class="nav-link" data-scroll-target="#carga-de-datos-y-diagnóstico-inicial">2. Carga de Datos y Diagnóstico Inicial</a></li>
-  <li><a href="#limpieza-y-preparación-de-datos" id="toc-limpieza-y-preparación-de-datos" class="nav-link" data-scroll-target="#limpieza-y-preparación-de-datos">3. Limpieza y Preparación de Datos</a></li>
-  <li><a href="#resumen-de-cambios" id="toc-resumen-de-cambios" class="nav-link" data-scroll-target="#resumen-de-cambios">Resumen de Cambios</a></li>
-  <li><a href="#visualización-exploratoria-exploratory-data-analysis" id="toc-visualización-exploratoria-exploratory-data-analysis" class="nav-link" data-scroll-target="#visualización-exploratoria-exploratory-data-analysis">4. Visualización Exploratoria (Exploratory Data Analysis)</a>
+  <li><a href="#context-and-business-question" id="toc-context-and-business-question" class="nav-link active" data-scroll-target="#context-and-business-question">1. Context and Business Question</a></li>
+  <li><a href="#data-loading-and-initial-diagnosis" id="toc-data-loading-and-initial-diagnosis" class="nav-link" data-scroll-target="#data-loading-and-initial-diagnosis">2. Data Loading and Initial Diagnosis</a></li>
+  <li><a href="#data-cleaning-and-preparation" id="toc-data-cleaning-and-preparation" class="nav-link" data-scroll-target="#data-cleaning-and-preparation">3. Data Cleaning and Preparation</a></li>
+  <li><a href="#summary-of-changes" id="toc-summary-of-changes" class="nav-link" data-scroll-target="#summary-of-changes">Summary of Changes</a></li>
+  <li><a href="#exploratory-data-visualization-exploratory-data-analysis" id="toc-exploratory-data-visualization-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-visualization-exploratory-data-analysis">4. Exploratory Data Visualization (Exploratory Data Analysis)</a>
   <ul class="collapse">
   <li><a href="#distribución-de-salario-por-género" id="toc-distribución-de-salario-por-género" class="nav-link" data-scroll-target="#distribución-de-salario-por-género">4.1 Distribución de Salario por Género</a></li>
   </ul></li>
-  <li><a href="#análisis-estadístico-y-modelado" id="toc-análisis-estadístico-y-modelado" class="nav-link" data-scroll-target="#análisis-estadístico-y-modelado">5. Análisis Estadístico y Modelado</a>
+  <li><a href="#statistical-modeling-and-analysis" id="toc-statistical-modeling-and-analysis" class="nav-link" data-scroll-target="#statistical-modeling-and-analysis">5. Statistical Modeling and Analysis</a>
   <ul class="collapse">
-  <li><a href="#análisis-descriptivo-por-género" id="toc-análisis-descriptivo-por-género" class="nav-link" data-scroll-target="#análisis-descriptivo-por-género">5.1 Análisis Descriptivo por Género</a></li>
-  <li><a href="#prueba-de-hipótesis-diferencia-salarial-por-género" id="toc-prueba-de-hipótesis-diferencia-salarial-por-género" class="nav-link" data-scroll-target="#prueba-de-hipótesis-diferencia-salarial-por-género">5.2 Prueba de Hipótesis: Diferencia Salarial por Género</a></li>
-  <li><a href="#prueba-t-de-student" id="toc-prueba-t-de-student" class="nav-link" data-scroll-target="#prueba-t-de-student"><strong>5.2 Prueba t de Student:</strong></a></li>
-  <li><a href="#análisis-de-correlación" id="toc-análisis-de-correlación" class="nav-link" data-scroll-target="#análisis-de-correlación">5.3 Análisis de Correlación</a></li>
-  <li><a href="#análisis-de-correlación-1" id="toc-análisis-de-correlación-1" class="nav-link" data-scroll-target="#análisis-de-correlación-1"><strong>5.3 Análisis de Correlación:</strong></a></li>
-  <li><a href="#modelo-de-regresión-lineal-múltiple" id="toc-modelo-de-regresión-lineal-múltiple" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-múltiple">5.4 Modelo de Regresión Lineal Múltiple</a></li>
-  <li><a href="#modelo-de-regresión-lineal" id="toc-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal"><strong>5.4 Modelo de Regresión Lineal:</strong></a></li>
+  <li><a href="#descriptive-analysis-by-gender" id="toc-descriptive-analysis-by-gender" class="nav-link" data-scroll-target="#descriptive-analysis-by-gender">5.1 Descriptive analysis by gender</a></li>
+  <li><a href="#descriptive-analysis" id="toc-descriptive-analysis" class="nav-link" data-scroll-target="#descriptive-analysis">5.1 Descriptive Analysis:</a></li>
+  <li><a href="#hypothesis-testing-salary-differnce-by-gender" id="toc-hypothesis-testing-salary-differnce-by-gender" class="nav-link" data-scroll-target="#hypothesis-testing-salary-differnce-by-gender">5.2 Hypothesis testing: Salary Differnce by Gender</a></li>
+  <li><a href="#t---student-test" id="toc-t---student-test" class="nav-link" data-scroll-target="#t---student-test"><strong>5.2 T - Student Test:</strong></a></li>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">5.3 Correlation Analysis</a></li>
+  <li><a href="#correlation-analysis-1" id="toc-correlation-analysis-1" class="nav-link" data-scroll-target="#correlation-analysis-1"><strong>5.3 Correlation Analysis:</strong></a></li>
+  <li><a href="#multiple-linear-regression-model" id="toc-multiple-linear-regression-model" class="nav-link" data-scroll-target="#multiple-linear-regression-model">5.4 Multiple Linear Regression Model</a></li>
+  <li><a href="#multiple-linear-regression-model-1" id="toc-multiple-linear-regression-model-1" class="nav-link" data-scroll-target="#multiple-linear-regression-model-1"><strong>5.4 Multiple Linear Regression Model:</strong></a></li>
   </ul></li>
-  <li><a href="#conclusiones-y-recomendaciones-de-negocio" id="toc-conclusiones-y-recomendaciones-de-negocio" class="nav-link" data-scroll-target="#conclusiones-y-recomendaciones-de-negocio">6. Conclusiones y Recomendaciones de Negocio</a>
+  <li><a href="#business-conclusions-and-recommendations" id="toc-business-conclusions-and-recommendations" class="nav-link" data-scroll-target="#business-conclusions-and-recommendations">6. Business Conclusions and Recommendations</a>
   <ul class="collapse">
-  <li><a href="#resumen-ejecutivo" id="toc-resumen-ejecutivo" class="nav-link" data-scroll-target="#resumen-ejecutivo">Resumen Ejecutivo</a></li>
-  <li><a href="#insights-clave---datos-duros" id="toc-insights-clave---datos-duros" class="nav-link" data-scroll-target="#insights-clave---datos-duros">INSIGHTS CLAVE - Datos Duros</a></li>
-  <li><a href="#recomendaciones" id="toc-recomendaciones" class="nav-link" data-scroll-target="#recomendaciones">RECOMENDACIONES</a></li>
-  <li><a href="#limitaciones" id="toc-limitaciones" class="nav-link" data-scroll-target="#limitaciones">LIMITACIONES</a></li>
-  <li><a href="#siguietes-pasos" id="toc-siguietes-pasos" class="nav-link" data-scroll-target="#siguietes-pasos">SIGUIETES PASOS</a></li>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#key-insights---hard-data" id="toc-key-insights---hard-data" class="nav-link" data-scroll-target="#key-insights---hard-data">KEY INSIGHTS - Hard Data</a></li>
+  <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations">RECOMMENDATIONS</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">LIMITATIONS</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">NEXT STEPS</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -207,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Análisis de Equidad Salarial y DEI</h1>
+<h1 class="title">Salary Equity and DEI Analysis</h1>
 </div>
 
 
@@ -224,38 +225,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="contexto-y-pregunta-de-negocio" class="level2">
-<h2 class="anchored" data-anchor-id="contexto-y-pregunta-de-negocio">1. Contexto y Pregunta de Negocio</h2>
-<p>En este proyecto, analizamos un dataset de empleados para responder una pregunta crítica en las organizaciones: <strong>¿Existe una brecha salarial de género no explicada por factores como experiencia, educación o departamento?</strong> Es decir, estamos buscando identificar si existe una brecha no explicada por los factores que comúnmente influyen en los niveles salariales de una empresa. Como Profesionales dentro de RH, estoy seguro que mi empresa mide la capacidad de las personas por sus habilidades hard-soft, y no por su género? A todos nos encantaría vivir en este mundo perfecto. Pero la realidad es que los sesgos existen, descubrirlos y limitarlos es nuestro trabajo.</p>
-<p>Más que un análisis simple de los datos proporcionados. Busco construir un modelo que nos permita aislar el efecto del género sobre el salario, controlando por otras variables realmente relevantes. Les invito a reflexionar: Ya es suficientemente difícil, ser mujer en México, como para que vengan a cuestionarte simplemente porque asi naciste.</p>
+<section id="context-and-business-question" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-business-question">1. Context and Business Question</h2>
+<p>In this project, we analyze an employee dataset to answer a critical question in organizations: <strong>Is there a gender pay gap unexplained by factors such as experience, education, or department?</strong> In other words, we are looking to identify whether there is a gap unexplained by the factors that commonly influence salary levels in a company. As HR Professionals, I am sure my company measures people’s capabilities by their hard and soft skills, and not by their gender? We would all love to live in this perfect world. But the reality is that biases exist, and discovering and limiting them is our job.</p>
+<p>More than a simple analysis of the provided data, I seek to build a model that allows us to isolate the effect of gender on salary, controlling for other truly relevant variables. I invite you to reflect: It is already difficult enough to be a woman in Mexico, without being questioned simply because of how you were born.</p>
 </section>
-<section id="carga-de-datos-y-diagnóstico-inicial" class="level2">
-<h2 class="anchored" data-anchor-id="carga-de-datos-y-diagnóstico-inicial">2. Carga de Datos y Diagnóstico Inicial</h2>
-<p>Primero, cargamos el dataset y realizamos un EDA (exploracion de datos), aqui vamos a identificar como viene el dataset. Que problemas tiene, y como podemos solucionarlos para hacer uso óptimo de este. En un mundo ideal los datasets generados por cuestionarios, encuestas, etc, son perfectos. Pero dado que los humanos no somos perfectos, nuestras respuestas y las herramientas que diseñamos para medir también tendrar errores que no anticipamos. Vamos a enfocarnos en buscar valores nulos, inconsistencia en formatos (fecha, hora, etc), y claro buscar identificar los casos atípicos.</p>
+<section id="data-loading-and-initial-diagnosis" class="level2">
+<h2 class="anchored" data-anchor-id="data-loading-and-initial-diagnosis">2. Data Loading and Initial Diagnosis</h2>
+<p>First, we load the dataset and perform an EDA (Exploratory Data Analysis). Here we will identify the state of the dataset, what problems it has, and how we can solve them to make optimal use of it. In an ideal world, datasets generated by questionnaires, surveys, etc., are perfect. But since humans are not perfect, our responses and the tools we design to measure them will also have errors that we do not anticipate. We will focus on finding null values, format inconsistencies (date, time, etc.), and of course, identifying outliers.</p>
 <div id="carga-y-diagnostico" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Cargar datos</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Loading data</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORTANTE: Verifica que el nombre del archivo coincida exactamente con el de tu carpeta 'data'</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/Employee_Performance_dataset.csv"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Diagnóstico rápido de valores nulos</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Diagnostics for null values</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nulos <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pct_nulos <span class="op">=</span> (nulos <span class="op">/</span> <span class="bu">len</span>(df) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>diagnostico <span class="op">=</span> pd.DataFrame({<span class="st">'Nulos'</span>: nulos, <span class="st">'%'</span>: pct_nulos})</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>diagnostico <span class="op">=</span> diagnostico[diagnostico[<span class="st">'Nulos'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].sort_values(by<span class="op">=</span><span class="st">'%'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- Primeras 5 filas del dataset ---"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- first 5 rows of dataset ---"</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>display(df.head())</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Columnas con valores nulos ---"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Columns containing null values ---"</span>)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>display(diagnostico)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>--- Primeras 5 filas del dataset ---</code></pre>
+<pre><code>--- first 5 rows of dataset ---</code></pre>
 </div>
 <div id="carga-y-diagnostico-1" class="cell-output cell-output-display">
 <div>
@@ -362,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
---- Columnas con valores nulos ---</code></pre>
+--- Columns containing null values ---</code></pre>
 </div>
 <div id="carga-y-diagnostico-2" class="cell-output cell-output-display">
 <div>
@@ -389,21 +390,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="limpieza-y-preparación-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="limpieza-y-preparación-de-datos">3. Limpieza y Preparación de Datos</h2>
-<p>Antes de hacer cualquier análisis, necesitamos hacer una limpieza del dataset y preparar los datos. Este paso es probablemnte el mas importante. Al entender a profundidad la calidad del dataset o de los datos con los cuales trabajamos, podemos realizar un mejor análisis, usar métodos más eficientes, elegir algoritmos que hagan sentido. Si no tenemos nuestros datos preparados, los insights no serán confiables. Habrá errores y sesgos inexplicables, o simplemente todod estará mal. Es crucial tener criterio y saber como manejar la limpieza y preparación, para poder hacer el mejor uso de los datos que si tenemos disponibles. No se pueden hacer milagros, pero si se pueden reducir los errores.</p>
+<section id="data-cleaning-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-and-preparation">3. Data Cleaning and Preparation</h2>
+<p>Before conducting any analysis, we need to clean the dataset and prepare the data. This step is probably the most important one.</p>
+<p>By deeply understanding the quality of the dataset or the data we’re working with, we can perform better analysis, use more efficient methods, and choose algorithms that make sense.</p>
+<p>If our data isn’t properly prepared, the insights won’t be reliable. There will be unexplained errors and biases, or simply everything will be wrong. It’s crucial to have good judgment and know how to handle cleaning and preparation, so we can make the best use of the data we have available. We can’t perform miracles, but we can certainly reduce errors.</p>
 <div id="cell-limpieza-datos" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Limpieza de texto en columnas categóricas (ejemplo: 'Department' o 'Job Title')</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Cleaning of categorical features (eg: 'Department' o 'Job Title')</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajusta 'Department' al nombre real de la columna de departamento en tu dataset</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>columnas_categoria <span class="op">=</span> [<span class="st">'Department'</span>, <span class="st">'Gender'</span>, <span class="st">'Status'</span>, <span class="st">'Location'</span>] </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> columnas_categoria:</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> df.columns:</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        df[col] <span class="op">=</span> df[col].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip().<span class="bu">str</span>.title()</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Manejo de valores nulos</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Numéricos: imputamos con la mediana (más robusta a datos atipicos que la media(promedio))</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Handling of Missing values</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerical:  we will be imputing median since it's more resilient towards outliers.</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> df.columns:</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> df[col].isnull().<span class="bu">any</span>():</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> pd.api.types.is_numeric_dtype(df[col]):</span>
@@ -412,28 +415,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            df[col] <span class="op">=</span> df[col].fillna(<span class="st">'No Especificado'</span>)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Ingeniería de características(features): Crear 'Antiguedad_Años'</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajusta 'Date of Joining' o 'Joining Date' al nombre real de la columna de fecha en tu dataset</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Feature engineering: Create 'Tenure_Years'</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Update 'Date of Joining' or 'Joining Date' to the actual name of the date column in your dataset</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Date of Joining'</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Joining Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date of Joining'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Antiguedad_Años'</span>] <span class="op">=</span> (pd.Timestamp.now() <span class="op">-</span> df[<span class="st">'Joining Date'</span>]).dt.days <span class="op">/</span> <span class="fl">365.25</span></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Antiguedad_Años'</span>] <span class="op">=</span> df[<span class="st">'Antiguedad_Años'</span>].<span class="bu">round</span>(<span class="dv">1</span>)</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Crear categoría de Performance (Bajo/Medio/Alto)</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Creating Performance Category (Low, Medium, Top)</span></span>
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Performance Score'</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Performance_Cat'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'Performance Score'</span>], </span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                                    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>], </span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                                    labels<span class="op">=</span>[<span class="st">'Bajo'</span>, <span class="st">'Medio'</span>, <span class="st">'Alto'</span>])</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                                    labels<span class="op">=</span>[<span class="st">'Low'</span>, <span class="st">'Medium'</span>, <span class="st">'Top'</span>])</span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- Dataset limpio: Primeras 5 filas con nuevas columnas ---"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- clean dataset first 5 rows ---"</span>)</span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>display(df.head())</span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Verificación final de nulos ---"</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Vertification of coount of missing values ---"</span>)</span>
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total de nulos restantes:"</span>, df.isnull().<span class="bu">sum</span>().<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>--- Dataset limpio: Primeras 5 filas con nuevas columnas ---</code></pre>
+<pre><code>--- clean dataset first 5 rows ---</code></pre>
 </div>
 <div id="limpieza-datos" class="cell-output cell-output-display">
 <div>
@@ -473,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Active</td>
 <td>New York</td>
 <td>Night</td>
-<td>Bajo</td>
+<td>Low</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
@@ -489,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Inactive</td>
 <td>Los Angeles</td>
 <td>Evening</td>
-<td>Bajo</td>
+<td>Low</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
@@ -505,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Inactive</td>
 <td>New York</td>
 <td>Morning</td>
-<td>Medio</td>
+<td>Medium</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
@@ -521,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Inactive</td>
 <td>Los Angeles</td>
 <td>Evening</td>
-<td>Bajo</td>
+<td>Low</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
@@ -537,7 +540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Inactive</td>
 <td>New York</td>
 <td>Evening</td>
-<td>Alto</td>
+<td>Top</td>
 </tr>
 </tbody>
 </table>
@@ -546,22 +549,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
---- Verificación final de nulos ---
+--- Vertification of coount of missing values ---
 Total de nulos restantes: 0</code></pre>
 </div>
 </div>
 </section>
-<section id="resumen-de-cambios" class="level2">
-<h2 class="anchored" data-anchor-id="resumen-de-cambios">Resumen de Cambios</h2>
-<p>Se realizaron las siguientes transformaciones en el DataFrame:</p>
-<p><strong>1. Estandarizacion del texto:</strong> - Las columnas categóricas (texto) : Deparment, Gender, Status, Location. Fueron limpiadas eliminando espacios extra y estandarizando el formato de mayscula/minuscula. Para evitar errores de comparación entre ¨HR¨ y ¨hr¨ o ¨ HR ¨.</p>
-<p><strong>2. Imputación de valores faltantes (missing values):</strong> - Variables numéricas (Performance Score o Age): los valores nulos se reemplazaron con la <strong>mediana</strong> de cada columna. Esta es una mejor práctica en el análisis de datos que minimiza el impacto por valores atípicos. Y mantiene una alta integridad del dataset, en lugar de borrar todos los records que tienen valores faltantes. -Variables categóricas: se creo una etiqueda llamada ¨No Especificado¨ para aun así mantener registros de datos incompletos y no achicar el dataset.</p>
-<p><strong>Creación de Nuevas variables:</strong> -<strong>Antiguedad_Años</strong> : Se calculan los años transcurridos desde la fecha de ingreso. Hasta la fecha actual. Esta variable añade mas capacidad de interpretación, para analizar como la experiencia en la empresa impacta el salario. -<strong>Performance_Cat</strong>: Tomamos el Performance Score que tenia un valor del 1-5 y lo convertimos en una variable categorica asignando valores como (Bajo, Medio, Alto). De esta forma es mas facil realizar un análisis comparativo por niveles de rendimiento.</p>
-<p><strong>CHECKPOINT</strong> ahora tenenemos un dataset sin inconsistencias, ni valores nulos. Estamos listos para realizar un análisis exploratorio y un modelo estadístico.</p>
+<section id="summary-of-changes" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-changes">Summary of Changes</h2>
+<p>The following transformations were performed on the DataFrame:</p>
+<p><strong>1. Text Standardization:</strong> - Categorical (text) columns: Department, Gender, Status, Location. Were cleaned by removing extra spaces and standardizing the uppercase/lowercase format. To avoid comparison errors between “HR” and “hr” or ” HR “.</p>
+<p><strong>2. Imputation of Missing Values:</strong> - Numeric variables (Performance Score or Age): null values were replaced with the <strong>median</strong> of each column. This is a best practice in data analysis that minimizes the impact of outliers. And maintains high dataset integrity, instead of deleting all records that have missing values. - Categorical variables: a label called “Not Specified” was created to still keep records of incomplete data and not shrink the dataset.</p>
+<p><strong>Creation of New Variables:</strong> -<strong>Tenure_Years</strong>: The years elapsed since the joining date are calculated. Up to the current date. This variable adds more interpretive capacity, to analyze how experience in the company impacts salary. -<strong>Performance_Cat</strong>: We took the Performance Score which had a value from 1-5 and converted it into a categorical variable assigning values such as (Low, Medium, High). This way it is easier to perform a comparative analysis by performance levels.</p>
+<p><strong>CHECKPOINT</strong> we now have a dataset without inconsistencies or null values. We are ready to perform an exploratory analysis and a statistical model.</p>
 </section>
-<section id="visualización-exploratoria-exploratory-data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="visualización-exploratoria-exploratory-data-analysis">4. Visualización Exploratoria (Exploratory Data Analysis)</h2>
-<p>-Previo a la creación de cualquier modelo (estadístico o de datos) exploramos visualmente las relaciones que existen entre las variables. Y empezaremos a analizar los patrones que surjen.</p>
+<section id="exploratory-data-visualization-exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-visualization-exploratory-data-analysis">4. Exploratory Data Visualization (Exploratory Data Analysis)</h2>
+<p>-Prior to the creation of any model (statistical or data), we visually explore the relationships that exist between the variables. And we will begin to analyze the patterns that emerge.</p>
 <section id="distribución-de-salario-por-género" class="level3">
 <h3 class="anchored" data-anchor-id="distribución-de-salario-por-género">4.1 Distribución de Salario por Género</h3>
 <div id="cell-fig-genero" class="cell" data-execution_count="3">
@@ -604,7 +607,8 @@ Figure&nbsp;2: Figura 4.2: Salario por Departamento y Genero
 </div>
 </div>
 </div>
-<p>Análisis:Comparación del salario promedio desglosado por departamento y género.Esta visualización permite identificar en qué áreas las diferencias salariales entre géneros son más pronunciadas y cuáles departamentos tienen compensaciones más altas o bajas en general. Aqui observamos que si existe una brecha en los departamenos de RH y Ventas(Sales) a favor de los hombres. Pero en el departamento de TI las mujeres tienen la ventaja en la brecha salarial. Aquí podemos empezar a observar que el Departamento tiene mas ingerencia en la brecha salarial, que el género. O almenos puede explicarla un poco mejor.</p>
+<p>Analysis: Comparison of average salary broken down by department and gender. This visualization allows us to identify in which areas the salary differences between genders are more pronounced, and which departments have higher or lower compensation overall.</p>
+<p>Here we observe that there is indeed a gap in the HR and Sales departments in favor of men. However, in the IT department, women have the advantage in the salary gap. Here we can begin to observe that the Department has more influence on the salary gap than gender. Or at least it can explain it a little better.</p>
 <div id="cell-fig-experiencia" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div id="fig-experiencia" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -613,34 +617,35 @@ Figure&nbsp;2: Figura 4.2: Salario por Departamento y Genero
 <img src="01_equidad_salarial_en_files/figure-html/fig-experiencia-output-1.png" width="662" height="470" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-experiencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Figura 4.3: Salario vs Experiencia(Tiempo en empresa)
+Figure&nbsp;3: Figura 4.3: Salary vs Tenure
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Análisis: Tendencia del salario promedio conforme aumentan los años de experiencia. Esta gráfica revela cómo evoluciona la compensación a lo largo de la carrera y si el crecimiento salarial es lineal, exponencial o se estanca en ciertos puntos. Esta gráfica nos muestra algo muy interesante. La experiencia no predice el salario, en esta empresa usando estos datos. No hay correlación entre Experiencia y Salario. El problema que tienen la empresa probablemente tiene una de sus raices aquí, pues el sistema de progresión tiene muchas fallas o no existe.</p>
+<p>Analysis: Trend of average salary as years of experience increase. This graph reveals how compensation evolves throughout a career and whether salary growth is linear, exponential, or stagnates at certain points.</p>
+<p>This graph shows us something very interesting. Experience does not predict salary in this company using this data. There is no correlation between Experience and Salary. The problem this company has likely has one of its roots here, as the progression system has many flaws or does not exist.</p>
 <div id="cell-fig-performance" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div id="fig-performance" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01_equidad_salarial_en_files/figure-html/fig-performance-output-1.png" width="662" height="471" class="figure-img">
+<img src="01_equidad_salarial_en_files/figure-html/fig-performance-output-1.png" width="663" height="470" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Figura 4.4: Relación Salario y Performance
+Figure&nbsp;4: Figura 4.4: Relationship between Salary and Performance
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Análisis: Salario promedio por categoría de desempeño, con barras de error que muestran la variabilidad (desviación estándar). Permite evaluar si existe una correlación clara entre alto rendimiento y mayor compensación, y qué tan consistente es esta relación dentro de cada categoría. Al realizar un test ANOVA (varianza) se observa que el performance (desempeño) no tiene impacto significativo en el salario. Los empleados con un Score 1 (bajo desempeño) tienen un sueldo mas alto que los de Score 5(alto desempeño). No podemos concluir hasta este momento algo definitivo, pero un diagnostico inicial apunta a que el problema puede venir por el mal diseño del sistema de incentivos.</p>
+<p>Analysis: Average salary by performance category, with error bars showing variability (standard deviation). This allows us to evaluate whether there is a clear correlation between high performance and higher compensation, and how consistent this relationship is within each category. Upon conducting an ANOVA test, we observe that performance does not have a significant impact on salary. Employees with a Score of 1 (low performance) earn higher salaries than those with a Score of 5 (high performance). While we cannot draw definitive conclusions at this stage, an initial diagnosis suggests that the problem may stem from a poorly designed incentive system.</p>
 </section>
 </section>
-<section id="análisis-estadístico-y-modelado" class="level2">
-<h2 class="anchored" data-anchor-id="análisis-estadístico-y-modelado">5. Análisis Estadístico y Modelado</h2>
-<section id="análisis-descriptivo-por-género" class="level3">
-<h3 class="anchored" data-anchor-id="análisis-descriptivo-por-género">5.1 Análisis Descriptivo por Género</h3>
+<section id="statistical-modeling-and-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-modeling-and-analysis">5. Statistical Modeling and Analysis</h2>
+<section id="descriptive-analysis-by-gender" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-analysis-by-gender">5.1 Descriptive analysis by gender</h3>
 <div id="cell-stats-descriptivo" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
@@ -648,14 +653,14 @@ Figure&nbsp;4: Figura 4.4: Relación Salario y Performance
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Estadísticas descriptivas por género</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive statistics: Gender</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>genero_stats <span class="op">=</span> df.groupby(<span class="st">'Gender'</span>)[<span class="st">'Salary'</span>].agg([<span class="st">'count'</span>, <span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'std'</span>]).<span class="bu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>genero_stats.columns <span class="op">=</span> [<span class="st">'N'</span>, <span class="st">'Promedio'</span>, <span class="st">'Mediana'</span>, <span class="st">'Desv. Est.'</span>]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estadísticas Salariales por Género:"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Salary Statistics by Gender:"</span>)</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>display(genero_stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Estadísticas Salariales por Género:</code></pre>
+<pre><code>Salary Statistics by Gender:</code></pre>
 </div>
 <div id="stats-descriptivo" class="cell-output cell-output-display">
 <div>
@@ -706,76 +711,79 @@ Figure&nbsp;4: Figura 4.4: Relación Salario y Performance
 </div>
 </div>
 </div>
-<p>5.1 Análisis Descriptivo: El dataset contiene 1,000 empleados distribuidos equitativamente: 328 hombres (32.8%), 332 mujeres (33.2%) y 340 de género ‘Other’ (34.0%). El salario promedio es de $5,898.73 (DE: $2,314.12), con una mediana de $5,892.50, indicando una distribución aproximadamente normal sin sesgos extremos.</p>
 </section>
-<section id="prueba-de-hipótesis-diferencia-salarial-por-género" class="level3">
-<h3 class="anchored" data-anchor-id="prueba-de-hipótesis-diferencia-salarial-por-género">5.2 Prueba de Hipótesis: Diferencia Salarial por Género</h3>
+<section id="descriptive-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-analysis">5.1 Descriptive Analysis:</h3>
+<p>The dataset contains 1,000 employees distributed equitably: 328 men (32.8%), 332 women (33.2%), and 340 of gender ‘Other’ (34.0%). The average salary is $5,898.73 (SD: $2,314.12), with a median of $5,892.50, indicating an approximately normal distribution without extreme biases.</p>
+</section>
+<section id="hypothesis-testing-salary-differnce-by-gender" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-testing-salary-differnce-by-gender">5.2 Hypothesis testing: Salary Differnce by Gender</h3>
 <div id="stats-ttest" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separar datos por género (solo Male y Female para el t-test)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gender Data  (only Male y Female for t-test)</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>salary_male <span class="op">=</span> df[df[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Male'</span>][<span class="st">'Salary'</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>salary_female <span class="op">=</span> df[df[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Female'</span>][<span class="st">'Salary'</span>]</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba t de Student (asumiendo varianzas desiguales)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># t de Student Test (assuming variance is not the same)</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>t_stat, p_value <span class="op">=</span> stats.ttest_ind(salary_male, salary_female, equal_var<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular diferencia y intervalo de confianza del 95%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating difference and confidence interval , 95%</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>diff_mean <span class="op">=</span> salary_male.mean() <span class="op">-</span> salary_female.mean()</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ci_male <span class="op">=</span> stats.t.interval(<span class="fl">0.95</span>, <span class="bu">len</span>(salary_male)<span class="op">-</span><span class="dv">1</span>, loc<span class="op">=</span>salary_male.mean(), scale<span class="op">=</span>stats.sem(salary_male))</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>ci_female <span class="op">=</span> stats.t.interval(<span class="fl">0.95</span>, <span class="bu">len</span>(salary_female)<span class="op">-</span><span class="dv">1</span>, loc<span class="op">=</span>salary_female.mean(), scale<span class="op">=</span>stats.sem(salary_female))</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Prueba t de Student para Diferencia de Medias:"</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salario promedio Male: $</span><span class="sc">{</span>salary_male<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (IC 95%: $</span><span class="sc">{</span>ci_male[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss"> - $</span><span class="sc">{</span>ci_male[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salario promedio Female: $</span><span class="sc">{</span>salary_female<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (IC 95%: $</span><span class="sc">{</span>ci_female[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss"> - $</span><span class="sc">{</span>ci_female[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Diferencia: $</span><span class="sc">{</span>diff_mean<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estadístico t: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P-valor: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"¿Significativo al 95%? </span><span class="sc">{</span><span class="st">'Sí'</span> <span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'No'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-Student Test for different Avg:"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Male Avg Salary: $</span><span class="sc">{</span>salary_male<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (IC 95%: $</span><span class="sc">{</span>ci_male[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss"> - $</span><span class="sc">{</span>ci_male[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Female Avg Salary: $</span><span class="sc">{</span>salary_female<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss"> (IC 95%: $</span><span class="sc">{</span>ci_female[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss"> - $</span><span class="sc">{</span>ci_female[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Difference: $</span><span class="sc">{</span>diff_mean<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"t Statistic: </span><span class="sc">{</span>t_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"¿Significant at 95%? </span><span class="sc">{</span><span class="st">'Yes'</span> <span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'No'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Prueba t de Student para Diferencia de Medias:
-Salario promedio Male: $6090.86 (IC 95%: $5844.43 - $6337.30)
-Salario promedio Female: $5793.08 (IC 95%: $5546.42 - $6039.74)
-Diferencia: $297.78
-Estadístico t: 1.6801
-P-valor: 0.0934
-¿Significativo al 95%? No</code></pre>
+<pre><code>t-Student Test for different Avg:
+Male Avg Salary: $6090.86 (IC 95%: $5844.43 - $6337.30)
+Female Avg Salary: $5793.08 (IC 95%: $5546.42 - $6039.74)
+Difference: $297.78
+t Statistic: 1.6801
+P-value: 0.0934
+¿Significant at 95%? No</code></pre>
 </div>
 </div>
 </section>
-<section id="prueba-t-de-student" class="level3">
-<h3 class="anchored" data-anchor-id="prueba-t-de-student"><strong>5.2 Prueba t de Student:</strong></h3>
+<section id="t---student-test" class="level3">
+<h3 class="anchored" data-anchor-id="t---student-test"><strong>5.2 T - Student Test:</strong></h3>
 <blockquote class="blockquote">
-<p>“La diferencia salarial observada entre hombres ($6,090.86) y mujeres ($5,793.08) es de $297.78 (5.14%). Sin embargo, el test t bilateral arroja un p-valor de 0.0934, que es mayor al umbral de significancia α=0.05. <strong>Esto significa que NO podemos rechazar la hipótesis nula</strong>: no existe evidencia estadística suficiente para afirmar que la brecha salarial de género sea sistemática en esta organización al 95% de confianza.”</p>
+<p>“The observed salary difference between men ($6,090.86) and women ($5,793.08) is $297.78 (5.14%). However, the two-tailed t-test yields a p-value of 0.0934, which is greater than the significance threshold α=0.05. <strong>This means that we CANNOT reject the null hypothesis</strong>: there is not enough statistical evidence to claim that the gender pay gap is systematic in this organization at a 95% confidence level.”</p>
 </blockquote>
 </section>
-<section id="análisis-de-correlación" class="level3">
-<h3 class="anchored" data-anchor-id="análisis-de-correlación">5.3 Análisis de Correlación</h3>
+<section id="correlation-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-analysis">5.3 Correlation Analysis</h3>
 <div id="stats-correlacion" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar variables numéricas para correlación</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting numerical variables for correlation</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>variables_numericas <span class="op">=</span> [<span class="st">'Salary'</span>, <span class="st">'Age'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df_corr <span class="op">=</span> df[variables_numericas].dropna()</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de correlación</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># HEATMAP </span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> df_corr.corr().<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matriz de Correlación:"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Heatmap:"</span>)</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>display(correlation_matrix)</span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap</span></span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">'.3f'</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Matriz de Correlación entre Variables Numéricas'</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'HEATMAP'</span>)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Matriz de Correlación:</code></pre>
+<pre><code>Heatmap:</code></pre>
 </div>
 <div id="stats-correlacion-1" class="cell-output cell-output-display">
 <div>
@@ -834,39 +842,40 @@ P-valor: 0.0934
 </div>
 </div>
 </section>
-<section id="análisis-de-correlación-1" class="level3">
-<h3 class="anchored" data-anchor-id="análisis-de-correlación-1"><strong>5.3 Análisis de Correlación:</strong></h3>
-<blockquote class="blockquote">
-<p>“La matriz de correlación revela hallazgos críticos: (1) La correlación entre Experience y Salary es casi nula (r=0.004, p=0.902), esto indica un comportamiento anormal de los datos. Aqui estamos comprobando que el dataset es sintetico. Es una de las primeras conclusiones importantes. (2) Performance Score tiene una correlación débil y negativa con Salary (r=-0.026), este segundo indicador nos deja ver que si tenemos una tendencia similar en nuestra empresa o hemos observado algo asi, es un foco rojo. Este es otro claro indicador de que los datos no son reales. Pues las empresas minimo cumplen con dar de aumento la inflacion. (3) Age(edad) muestra correlación moderada con Experience (r=0.512), como era de esperar porque ambas variables incrementan con el tiempo.Pero esta tendencia no se observa con Salary(salario). Estos patrones nos indican varias cosas, verficiamos que son datos sinteticos y a la par, es algo que se ve ‘raro’ y debería saltarle a cualquier profesional de People Analytics como una alerta importante.”</p>
-</blockquote>
+<section id="correlation-analysis-1" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-analysis-1"><strong>5.3 Correlation Analysis:</strong></h3>
+<pre><code>"The correlation matrix (HEATMAP) reveals critical findings:
+(1) The correlation between Experience and Salary is nearly zero (r=0.004, p=0.902), which indicates abnormal data behavior. Here we are confirming that the dataset is synthetic. This is one of the first important conclusions.
+(2) Performance Score has a weak and negative correlation with Salary (r=-0.026). This second indicator shows us that if we have a similar trend in our company or have observed something like this, it's a red flag. This is another clear indicator that the data is not real, since companies at minimum provide inflation-adjusted raises.
+(3) Age shows moderate correlation with Experience (r=0.512), as expected since both variables increase over time. But this trend is not observed with Salary. These patterns indicate several things: we verify that the data is synthetic, and at the same time, it's something that looks 'odd' and should alert any People Analytics professional as an important warning."</code></pre>
 </section>
-<section id="modelo-de-regresión-lineal-múltiple" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-de-regresión-lineal-múltiple">5.4 Modelo de Regresión Lineal Múltiple</h3>
+<section id="multiple-linear-regression-model" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-linear-regression-model">5.4 Multiple Linear Regression Model</h3>
 <div id="stats-regresion" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar datos para regresión</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df[[<span class="st">'Salary'</span>, <span class="st">'Gender'</span>, <span class="st">'Department'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]].dropna()</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Codificar variables categóricas</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Gender_Male'</span>] <span class="op">=</span> (df_model[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Male'</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Dept_IT'</span>] <span class="op">=</span> (df_model[<span class="st">'Department'</span>] <span class="op">==</span> <span class="st">'IT'</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Dept_Sales'</span>] <span class="op">=</span> (df_model[<span class="st">'Department'</span>] <span class="op">==</span> <span class="st">'Sales'</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables independientes</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_model[[<span class="st">'Gender_Male'</span>, <span class="st">'Dept_IT'</span>, <span class="st">'Dept_Sales'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]]</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X) </span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_model[<span class="st">'Salary'</span>]</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar modelo</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar resumen</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepping data for regression model</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df[[<span class="st">'Salary'</span>, <span class="st">'Gender'</span>, <span class="st">'Department'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]].dropna()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Encoding of categorical variables</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Gender_Male'</span>] <span class="op">=</span> (df_model[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="st">'Male'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Dept_IT'</span>] <span class="op">=</span> (df_model[<span class="st">'Department'</span>] <span class="op">==</span> <span class="st">'IT'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">'Dept_Sales'</span>] <span class="op">=</span> (df_model[<span class="st">'Department'</span>] <span class="op">==</span> <span class="st">'Sales'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Independent Variables</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_model[[<span class="st">'Gender_Male'</span>, <span class="st">'Dept_IT'</span>, <span class="st">'Dept_Sales'</span>, <span class="st">'Experience'</span>, <span class="st">'Performance Score'</span>]]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X) </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_model[<span class="st">'Salary'</span>]</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># AModel fitting</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
@@ -875,7 +884,7 @@ Dep. Variable:                 Salary   R-squared:                       0.004
 Model:                            OLS   Adj. R-squared:                 -0.000
 Method:                 Least Squares   F-statistic:                    0.9811
 Date:                Tue, 16 Jun 2026   Prob (F-statistic):              0.417
-Time:                        14:46:44   Log-Likelihood:                -9156.9
+Time:                        15:23:02   Log-Likelihood:                -9156.9
 No. Observations:                1000   AIC:                         1.832e+04
 Df Residuals:                     995   BIC:                         1.835e+04
 Df Model:                           4                                         
@@ -903,38 +912,73 @@ strong multicollinearity problems or that the design matrix is singular.</code><
 </div>
 </div>
 </section>
-<section id="modelo-de-regresión-lineal" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-de-regresión-lineal"><strong>5.4 Modelo de Regresión Lineal:</strong></h3>
+<section id="multiple-linear-regression-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-linear-regression-model-1"><strong>5.4 Multiple Linear Regression Model:</strong></h3>
 <blockquote class="blockquote">
-<p>“El modelo de regresión múltiple (R²=0.008) explica solo el 0.8% de la variabilidad salarial, esto indica que las variables incluidas (género, departamento, experiencia, performance) tienen un poder predictivo extremadamente bajo y no explican la brecha salarial que queremos identificar. El coeficiente para Gender_Male es de $297.78 (p=0.093), confirmando que no es estadísticamente significativo, ser hombre no explica una brecha salarial que pudiese existir. Los departamentos IT y Sales no muestran diferencias significativas respecto a HR (p&gt;0.05). <strong>El hallazgo más preocupante es que Experience tiene un coeficiente de solo 1.21 (p=0.902)</strong>, lo que confirma que la antigüedad no impacta el salario en esta organización. Este modelo sugiere que factores no observados (negociación individual, sesgos de managers, o errores en el sistema de compensación) dominan la determinación salarial. <strong>Este análisis resulta crucial para poder ver que factores debemos estar tomando en cuenta al momento de realizar un análisis con datos reales. Es un gran ejercicio para retar nuestras ideas previas.</strong>”</p>
+<p>“The multiple regression model (R²=0.008) explains only 0.8% of the salary variability, this indicates that the included variables (gender, department, experience, performance) have extremely low predictive power and do not explain the salary gap we want to identify. The coefficient for Gender_Male is $297.78 (p=0.093), confirming that it is not statistically significant, being male does not explain a salary gap that might exist. The IT and Sales departments do not show significant differences compared to HR (p&gt;0.05). <strong>The most concerning finding is that Experience has a coefficient of only 1.21 (p=0.902)</strong>, which confirms that tenure does not impact salary in this organization. This model suggests that unobserved factors (individual negotiation, manager biases, or errors in the compensation system) dominate salary determination. <strong>This analysis is crucial to be able to see what factors we should be taking into account when conducting an analysis with real data. It is a great exercise to challenge our preconceived ideas.</strong>”</p>
 </blockquote>
 <hr>
 </section>
 </section>
-<section id="conclusiones-y-recomendaciones-de-negocio" class="level2">
-<h2 class="anchored" data-anchor-id="conclusiones-y-recomendaciones-de-negocio">6. Conclusiones y Recomendaciones de Negocio</h2>
-<section id="resumen-ejecutivo" class="level3">
-<h3 class="anchored" data-anchor-id="resumen-ejecutivo">Resumen Ejecutivo</h3>
-<p>El análisis realizado sobre el dataset que trabajamos, nos arroja un par de cosas. Primero, es que en este caso no hay brecha salarial que sea explicada por genero. Aunque esto puede ser un poco deconcertante, podemos estar tranquilos de que si fuese lo contrario, nuestro robusto análisis lo podría identificar. La segunda conclusion es que el sistema de compensación es muuuy raro (por la naturaleza sintética del dataset), y observamos que no hay relación entre performance o experiencia y el grado salarial. Es decir, en este análisis el desempeño y la antiguedad de los empleados, no nos sirven para predecir el salario.</p>
+<section id="business-conclusions-and-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="business-conclusions-and-recommendations">6. Business Conclusions and Recommendations</h2>
+<section id="executive-summary" class="level3">
+<h3 class="anchored" data-anchor-id="executive-summary">Executive Summary</h3>
+<p>The analysis performed on our dataset reveals two key findings. First, there is no gender-based salary gap in this case. While this might be somewhat surprising, we can be confident that if the opposite were true, our robust analysis would have identified it. The second conclusion is that the compensation system is highly unusual (due to the synthetic nature of the dataset), and we observe no relationship between performance or experience and salary grade. In other words, in this analysis, employee performance and tenure do not serve to predict salary.</p>
 </section>
-<section id="insights-clave---datos-duros" class="level3">
-<h3 class="anchored" data-anchor-id="insights-clave---datos-duros">INSIGHTS CLAVE - Datos Duros</h3>
-<p>Brecha de género no significativa | Diferencia de 5.14%, p=0.0934, Cohen’s d=0.13 | No hay evidencia de discriminación salarial sistemática. | | Experiencia no predice salario | r=0.004, p=0.985 | El sistema actual de progresión salarial no está funcionando. | | Performance no impacta salario | r=0.002, p=0.879 | Riesgo alto de fuga de talento de alto rendimiento. | | Modelo predictivo débil | R²=0.004, F-test p=0.662 | Factores no observados dominan la compensación. |</p>
-<p><strong>Los insights presentados nos ayudan a pensar en como un dataset con este comportamiento impacta en el talento y en la organizacion. Podemos darle respuesta a problemas que aun no llegan, anticiparnos. Tenemos dos insights que nos hablan del talento. El sistema de compensación actual no esta funcionando, porque los empleados no tienen un incentivo para permanecer en la empresa. No hay un camino claro a ganas mas y aunque este no sea la única razón por la cual la gente trabaja, es uno de los principales drivers.</strong> También es importante destacar que los empleados catalogados con un Desmepeño alto, estan en riesgo de rotación. Aqui se puede perder muchísimo dinero y know-how clave que las empresas no tienen en terminos monetarios, pero que impactan muchísimo los procesos, la cultura organizacional y el sentimiento colectivo.</p>
+<section id="key-insights---hard-data" class="level3">
+<h3 class="anchored" data-anchor-id="key-insights---hard-data">KEY INSIGHTS - Hard Data</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 44%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Insight</th>
+<th>Statistical Evidence</th>
+<th>Business Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-significant gender gap</td>
+<td>5.14% difference, p=0.0934, Cohen’s d=0.13</td>
+<td>No evidence of systematic salary discrimination.</td>
+</tr>
+<tr class="even">
+<td>Experience does not predict salary</td>
+<td>r=0.004, p=0.985</td>
+<td>The current salary progression system is not working.</td>
+</tr>
+<tr class="odd">
+<td>Performance does not impact salary</td>
+<td>r=0.002, p=0.879</td>
+<td>High risk of high-performing talent attrition.</td>
+</tr>
+<tr class="even">
+<td>Weak predictive model</td>
+<td>R²=0.004, F-test p=0.662</td>
+<td>Unobserved factors dominate compensation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The insights presented help us think about how a dataset with this behavior impacts talent and the organization. We can answer problems that haven’t arrived yet, anticipate them. We have two insights that speak to talent. The current compensation system is not working because employees have no incentive to stay with the company. There is no clear path to earn more, and while this may not be the only reason people work, it is one of the main drivers.</strong> It is also important to highlight that employees categorized as high performers are at risk of turnover. This is where companies can lose a lot of money and key know-how that they don’t have in monetary terms, but which greatly impacts processes, organizational culture, and collective sentiment.</p>
 </section>
-<section id="recomendaciones" class="level3">
-<h3 class="anchored" data-anchor-id="recomendaciones">RECOMENDACIONES</h3>
-<p><strong>Corto Plazo (0-3 meses):</strong> -(Se necesita una auditoría completa del actual sistema de compensaciónes, cuales son los KPIs que estan decidiendo los aumentos y alinear más todo al desempeño)</p>
-<p><strong>Mediano Plazo (3-12 meses):</strong> -(Rediseño de grados salariales intra-empresa. Establecer un tabulador mas robusto que contenga variables alineadas con el desempeño, impacto de negocio, antiguedad, carrera, y posiciones clave. Impulsando el diseño de un sistema basado en expectativas claras y objetivos medibles).</p>
-<p><strong>Largo Plazo (12+ meses):</strong> -(Trabajar con Dirección, Recursos Humanos y Compensaciones, para implementar un sistema mas transparente y alineado a los objetivos y estrategia de negocio).</p>
+<section id="recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="recommendations">RECOMMENDATIONS</h3>
+<p><strong>Short Term (0-3 months):</strong> - A complete audit of the current compensation system is needed, identifying which KPIs are driving raises and aligning everything more closely with performance.</p>
+<p><strong>Medium Term (3-12 months):</strong> - Redesign of internal salary grades. Establish a more robust salary scale that includes variables aligned with performance, business impact, tenure, career development, and key positions. Promote the design of a system based on clear expectations and measurable objectives.</p>
+<p><strong>Long Term (12+ months):</strong> - Work with Executive Leadership, Human Resources, and Compensation teams to implement a more transparent system aligned with business objectives and strategy.</p>
 </section>
-<section id="limitaciones" class="level3">
-<h3 class="anchored" data-anchor-id="limitaciones">LIMITACIONES</h3>
-<p>Lo más importante a destacar es que este dataset tiene patrones muy atípicos. Pero <strong>SI SE PUEDE VER ESTO EN EL EJEMPLO, SE PUEDE REPLICAR EN LA VIDA REAL CON DATOS REALES!</strong></p>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">LIMITATIONS</h3>
+<p>The most important thing to highlight is that this dataset has very atypical patterns. But <strong>IF THIS CAN BE SEEN IN THE EXAMPLE, IT CAN BE REPLICATED IN REAL LIFE WITH REAL DATA!</strong></p>
 </section>
-<section id="siguietes-pasos" class="level3">
-<h3 class="anchored" data-anchor-id="siguietes-pasos">SIGUIETES PASOS</h3>
-<p>Para profundizar en el análisis se recomienda lo siguiente: -<strong>Integrar datos de rotación. Darle seguimiento puntual a los empleados que tienen el mejor desmpeño. Esto da una señal a los demas empleados que su desempeño es muy importante para retención y construcción de su propia carrera.</strong> -<strong>Sería muy interesante observar la relación entre nuevas variables como educación y certificaciónes, para analizar como impacta en salario, desempeño y si explica mas una brecha salarial.</strong></p>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">NEXT STEPS</h3>
+<p>To deepen the analysis, the following is recommended: - <strong>Integrate turnover data. Provide precise follow-up to employees who have the best performance. This signals to other employees that their performance is very important for retention and building their own career.</strong> - <strong>It would be very interesting to observe the relationship between new variables such as education and certifications, to analyze how they impact salary, performance, and whether they explain more of a salary gap.</strong></p>
 
 
 </section>
